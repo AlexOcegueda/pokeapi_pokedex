@@ -46,10 +46,11 @@ const Main=()=>{
                             setUrl(prevUrl)
                         }}>Previous</button>}
 
-                        <button onClick={()=>{
+                        { nextUrl && <button onClick={()=>{
                             setPokeData([])
                             setUrl(nextUrl)
-                        }}>Next</button>
+                        }}>Next</button>}
+                        
                     </div>
                 </div>
                 <div className="right-content">
