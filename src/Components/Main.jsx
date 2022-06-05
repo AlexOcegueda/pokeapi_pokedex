@@ -18,8 +18,19 @@ const Main=()=>{
         setPrevUrl(res.data.previous);
         getPokemon(res.data.results);
         setLoading(false);
+        
     }
     
+    const getPokemon=async(res)=>{
+        res.map(async(item)=>{
+            const result=await axios.get(item.url)
+            setPokeData(state=>{
+                state=[...state,result.data]
+                return state;
+            })
+        })
+    }
+
     useEffect(()=>{
         pokeFun();
     }, [url])
