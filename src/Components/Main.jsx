@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Pokeinfo from "./Pokeinfo";
+import axios from "axios";
 
 const Main=()=>{
+    const [pokeData,setPokeData]=useState([])
+    const[loading,setLoading]=useState(true);
+    const [url,setUrl]=useState("https://pokeapi.co/api/v2/pokemon/")
+    const [nextUrl, setNextUrl]=useState();
+    const [prevUrl, setPrevUrl]=useState();
+
+    const pokeFun=async()=>{
+        setLoading(true);
+        const res=await axios.get(url);
+        //console.log(res.data.results);
+        setNextUrl(res.data.next);
+        setPrevUrl(res.data.previous);
+        getPokemon(res.data.results);
+        setLoading(false);
+    }
+    
+    useEffect(()=>{
+        pokeFun();
+    }, [url])
     return (
         <>
             <div className="container">
@@ -11,8 +31,10 @@ const Main=()=>{
                     <Card/>
                     <Card/>
                     <Card/>
-                    <Card/>
-                    <Card/>
+                    <div className="btn-group">
+                        <button>Previous</button>
+                        <button>Next</button>
+                    </div>
                 </div>
                 <div className="right-content">
                     <Pokeinfo/>

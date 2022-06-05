@@ -55,7 +55,7 @@ body {
 }
 
 .abilities .group {
-    background-color:  orange;
+    background-color:  red;
     color: white;
     padding: 0.5rem;
     font-size: 12px;
@@ -63,9 +63,25 @@ body {
 }
 
 .base-stat {
-    
+    margin-top: 2rem;
 }
 
+.btn-group {
+    display: flex;
+}
+
+.btn-group button {
+    outline: none;
+    border: none;
+    width: 150px;
+    padding: 0.3rem 0;
+    margin: 1rem;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border-radius: 8px;
+}
 .card {
     width: 300px;
     background-color: aqua;
